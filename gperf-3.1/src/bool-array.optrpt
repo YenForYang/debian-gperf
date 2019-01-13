@@ -1,0 +1,72 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -I./../lib -diag-disable=10013,10385,10237,10346 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=99999 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -c -o bool-array.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 99999 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: Bool_Array::~Bool_Array(Bool_Array *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Bool_Array::~Bool_Array(Bool_Array *)) [1/4=25.0%] ./bool-array.cc(30,1)
+  -> INLINE (MANUAL): (32,13) Options::operator[](const Options *, Option_Type) const (isz = 2) (sz = 10)
+  -> INLINE: (33,5) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (36,3) operator delete[](void *, unsigned long)
+
+===========================================================================
+
+Begin optimization report for: Bool_Array::~Bool_Array(Bool_Array *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Bool_Array::~Bool_Array(Bool_Array *const)) [2/4=50.0%] ./bool-array.cc(29,13)
+  -> INLINE: (29,13) Bool_Array::~Bool_Array(Bool_Array *) (isz = 25) (sz = 30)
+    -> INLINE (MANUAL): (32,13) Options::operator[](const Options *, Option_Type) const (isz = 2) (sz = 10)
+    -> INLINE: (33,5) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> EXTERN: (36,3) operator delete[](void *, unsigned long)
+
+===========================================================================
+
+Begin optimization report for: Options::operator[](const Options *, Option_Type) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::operator[](const Options *, Option_Type) const) ./options.icc(27,1)
+
+===========================================================================
+
+Begin optimization report for: fprintf(FILE *, const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fprintf(FILE *, const char *, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(99,1)
+
+===========================================================================

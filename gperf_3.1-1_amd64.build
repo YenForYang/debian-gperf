@@ -1,0 +1,948 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package gperf
+dpkg-buildpackage: info: source version 3.1-1
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Hilko Bengen <bengen@debian.org>
+icc: remark #10397: optimization reports are generated in *.optrpt files in the output location
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+dpkg-source: info: using options from gperf-3.1/debian/source/options: --extend-diff-ignore=doc/.*\.(html|info)$
+ fakeroot debian/rules clean
+dh clean
+   dh_auto_clean
+	make -j1 distclean
+make[1]: Entering directory '/dev/shm/gperf/gperf-3.1'
+cd lib; if test -f Makefile; then make distclean; fi
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/lib'
+rm -f *~ *.s *.o *.a libgp.a core
+rm -f config.status config.log config.cache Makefile
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/lib'
+cd src; if test -f Makefile; then make distclean; fi
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/src'
+rm -f *~ *.s *.o *.a gperf gperf.manifest core
+rm -f config.status config.log config.cache Makefile config.h
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/src'
+cd tests; if test -f Makefile; then make distclean; fi
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/tests'
+rm -f *.o core *inset.c output.* *.out \
+      aout aout.manifest \
+      cout cout.manifest \
+      lu2out lu2out.manifest \
+      lu8out lu8out.manifest \
+      m3out m3out.manifest \
+      pout pout.manifest \
+      preout preout.manifest \
+      smtp.c smtp smtp.manifest \
+      tmp-* valitest*
+rm -f -r *.dSYM
+rm -f config.status config.log config.cache Makefile
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/tests'
+cd doc; if test -f Makefile; then make distclean; fi
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/doc'
+rm -f *~ *.aux *.toc *.cp *.fn *.ky *.pg *.tp *.vr *.my *.log *.cps core
+rm -f config.status config.log config.cache Makefile
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/doc'
+rm -f config.status config.log config.cache Makefile
+make[1]: Leaving directory '/dev/shm/gperf/gperf-3.1'
+   dh_clean
+	rm -f debian/debhelper-build-stamp
+	rm -rf debian/.debhelper/
+	rm -f debian/gperf.debhelper.log
+	rm -f -- debian/gperf.substvars debian/files
+	rm -fr -- debian/gperf/ debian/tmp/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+FAKEROOTKEY=1240009587 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh build
+   dh_update_autotools_config
+   dh_auto_configure
+	./configure --build=x86_64-linux-gnu --prefix=/usr --includedir=\${prefix}/include --mandir=\${prefix}/share/man --infodir=\${prefix}/share/info --sysconfdir=/etc --localstatedir=/var --disable-silent-rules --libdir=\${prefix}/lib/x86_64-linux-gnu --libexecdir=\${prefix}/lib/x86_64-linux-gnu --disable-maintainer-mode --disable-dependency-tracking
+configure: loading site script /usr/share/config.site
+checking whether make sets $(MAKE)... yes
+configure: creating ./config.status
+config.status: creating Makefile
+=== configuring in lib (/dev/shm/gperf/gperf-3.1/lib)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr'  '--build=x86_64-linux-gnu' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-silent-rules' '--libdir=${prefix}/lib/x86_64-linux-gnu' '--libexecdir=${prefix}/lib/x86_64-linux-gnu' '--disable-maintainer-mode' '--disable-dependency-tracking' 'build_alias=x86_64-linux-gnu' --cache-file=/dev/null --srcdir=.
+configure: loading site script /usr/share/config.site
+checking whether make sets $(MAKE)... yes
+checking for gcc... icc.pl
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether icc.pl accepts -g... yes
+checking for icc.pl option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache /usr/bin/cpp.intel
+checking whether we are using the GNU C++ compiler... yes
+checking whether icpc.pl accepts -g... yes
+checking how to run the C++ preprocessor... icpc.pl -E
+checking for ar... xiar.pl
+checking for ranlib... ranlib
+checking for a BSD compatible install... /usr/bin/install
+configure: creating ./config.status
+config.status: creating Makefile
+=== configuring in src (/dev/shm/gperf/gperf-3.1/src)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr'  '--build=x86_64-linux-gnu' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-silent-rules' '--libdir=${prefix}/lib/x86_64-linux-gnu' '--libexecdir=${prefix}/lib/x86_64-linux-gnu' '--disable-maintainer-mode' '--disable-dependency-tracking' 'build_alias=x86_64-linux-gnu' --cache-file=/dev/null --srcdir=.
+configure: loading site script /usr/share/config.site
+checking whether make sets $(MAKE)... yes
+checking for gcc... icc.pl
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether icc.pl accepts -g... yes
+checking for icc.pl option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache /usr/bin/cpp.intel
+checking whether we are using the GNU C++ compiler... yes
+checking whether icpc.pl accepts -g... yes
+checking how to run the C++ preprocessor... icpc.pl -E
+checking for a BSD compatible install... /usr/bin/install
+checking for stack-allocated variable-size arrays... yes
+checking for rand in -lm... yes
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating config.h
+=== configuring in tests (/dev/shm/gperf/gperf-3.1/tests)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr'  '--build=x86_64-linux-gnu' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-silent-rules' '--libdir=${prefix}/lib/x86_64-linux-gnu' '--libexecdir=${prefix}/lib/x86_64-linux-gnu' '--disable-maintainer-mode' '--disable-dependency-tracking' 'build_alias=x86_64-linux-gnu' --cache-file=/dev/null --srcdir=.
+configure: loading site script /usr/share/config.site
+checking whether make sets $(MAKE)... yes
+checking for gcc... icc.pl
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether icc.pl accepts -g... yes
+checking for icc.pl option to accept ISO C89... none needed
+checking how to run the C preprocessor... ccache /usr/bin/cpp.intel
+checking whether we are using the GNU C++ compiler... yes
+checking whether icpc.pl accepts -g... yes
+checking how to run the C++ preprocessor... icpc.pl -E
+configure: creating ./config.status
+config.status: creating Makefile
+=== configuring in doc (/dev/shm/gperf/gperf-3.1/doc)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr'  '--build=x86_64-linux-gnu' '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' '--sysconfdir=/etc' '--localstatedir=/var' '--disable-silent-rules' '--libdir=${prefix}/lib/x86_64-linux-gnu' '--libexecdir=${prefix}/lib/x86_64-linux-gnu' '--disable-maintainer-mode' '--disable-dependency-tracking' 'build_alias=x86_64-linux-gnu' --cache-file=/dev/null --srcdir=.
+configure: loading site script /usr/share/config.site
+checking whether make sets $(MAKE)... yes
+checking for a BSD compatible install... /usr/bin/install
+configure: creating ./config.status
+config.status: creating Makefile
+   dh_auto_build
+	make -j1
+make[1]: Entering directory '/dev/shm/gperf/gperf-3.1'
+cd lib; make all
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/lib'
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -c ./getopt.c
+icc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -c ./getopt1.c
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -c ./getline.cc
+./getline.cc(93): remark #2259: non-pointer conversion from "int" to "char" may lose significant bits
+        *read_pos++ = c;
+                    ^
+
+./getline.cc(116): remark #2259: non-pointer conversion from "int" to "char" may lose significant bits
+    return getstr (lineptr, n, stream, delimiter, 0);
+                                       ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -c ./hash.cc
+rm -f libgp.a
+xiar.pl rc libgp.a getopt.o getopt1.o getline.o hash.o
+xiar: executing 'ar'
+ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+ranlib libgp.a
+ranlib: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/lib'
+cd src; make all
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/src'
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./version.cc
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./positions.cc
+In file included from ./positions.h(168),
+                 from ./positions.cc(22):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./positions.cc(22):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./positions.cc(22):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./positions.cc(22):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./options.cc
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./options.cc(22):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./options.cc(22):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./options.cc(22):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./options.cc(22):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+In file included from ./options.h(298),
+                 from ./options.cc(22):
+./options.icc(26): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::operator[] (Option_Type option) const
+                                   ^
+
+In file included from ./options.h(298),
+                 from ./options.cc(22):
+./options.icc(33): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::set (Option_Type option)
+                            ^
+
+./options.cc(960): remark #2259: non-pointer conversion from "double" to "float" may lose significant bits
+              numerator = strtod (/*getopt*/optarg, &endptr);
+                        ^
+
+./options.cc(968): remark #2259: non-pointer conversion from "double" to "float" may lose significant bits
+                      denominator = strtod (denomptr, &endptr);
+                                  ^
+
+./options.cc(986): remark #1572: floating-point equality and inequality comparisons are unreliable
+              if (_size_multiple == 0)
+                                    ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./keyword.cc
+In file included from ./positions.h(168),
+                 from ./keyword.cc(27):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./keyword.cc(27):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./keyword.cc(27):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./keyword.cc(27):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./keyword-list.cc
+./keyword-list.cc(101): remark #981: operands are evaluated in unspecified order
+        if (less (list2->first(), list1->first()))
+                                  ^
+
+./keyword-list.cc(101): remark #981: operands are evaluated in unspecified order
+        if (less (list2->first(), list1->first()))
+            ^
+
+./keyword-list.cc(151): remark #981: operands are evaluated in unspecified order
+                      mergesort_list (right_half, less),
+                      ^
+
+./keyword-list.cc(150): remark #981: operands are evaluated in unspecified order
+        return merge (mergesort_list (list, less),
+               ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./input.cc
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./input.cc(28):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./input.cc(28):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./input.cc(28):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./input.cc(28):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+In file included from ./options.h(298),
+                 from ./input.cc(28):
+./options.icc(26): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::operator[] (Option_Type option) const
+                                   ^
+
+In file included from ./options.h(298),
+                 from ./input.cc(28):
+./options.icc(33): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::set (Option_Type option)
+                            ^
+
+./input.cc(410): remark #981: operands are evaluated in unspecified order
+                               pretty_input_file_name (), lineno);
+                               ^
+
+./input.cc(406): remark #981: operands are evaluated in unspecified order
+                      fprintf (stderr, "%s:%u:\n%s:%u:"
+                      ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./bool-array.cc
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./bool-array.h(70),
+                 from ./bool-array.cc(22):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./bool-array.h(70),
+                 from ./bool-array.cc(22):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./bool-array.h(70),
+                 from ./bool-array.cc(22):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./bool-array.h(70),
+                 from ./bool-array.cc(22):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+In file included from ./options.h(298),
+                 from ./bool-array.h(70),
+                 from ./bool-array.cc(22):
+./options.icc(26): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::operator[] (Option_Type option) const
+                                   ^
+
+In file included from ./options.h(298),
+                 from ./bool-array.h(70),
+                 from ./bool-array.cc(22):
+./options.icc(33): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::set (Option_Type option)
+                            ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./hash-table.cc
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./hash-table.cc(27):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./hash-table.cc(27):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./hash-table.cc(27):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./hash-table.cc(27):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+In file included from ./options.h(298),
+                 from ./hash-table.cc(27):
+./options.icc(26): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::operator[] (Option_Type option) const
+                                   ^
+
+In file included from ./options.h(298),
+                 from ./hash-table.cc(27):
+./options.icc(33): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::set (Option_Type option)
+                            ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./search.cc
+In file included from ./positions.h(168),
+                 from ./search.h(28),
+                 from ./search.cc(22):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./search.h(28),
+                 from ./search.cc(22):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./search.h(28),
+                 from ./search.cc(22):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./search.h(28),
+                 from ./search.cc(22):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+In file included from ./options.h(298),
+                 from ./bool-array.h(70),
+                 from ./search.h(29),
+                 from ./search.cc(22):
+./options.icc(26): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::operator[] (Option_Type option) const
+                                   ^
+
+In file included from ./options.h(298),
+                 from ./bool-array.h(70),
+                 from ./search.h(29),
+                 from ./search.cc(22):
+./options.icc(33): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::set (Option_Type option)
+                            ^
+
+./search.cc(876): remark #1599: declaration hides variable "temp" (declared at line 740)
+          for (KeywordExt_List *temp = _head; temp; temp = temp->rest())
+                                ^
+
+./search.cc(887): remark #1599: declaration hides variable "temp" (declared at line 740)
+        for (KeywordExt_List *temp = _head; temp; temp = temp->rest())
+                              ^
+
+./search.cc(1679): remark #981: operands are evaluated in unspecified order
+                     ptr->first()->_hash_value, ptr->first()->_allchars_length, ptr->first()->_final_index);
+                                                ^
+
+./search.cc(1678): remark #981: operands are evaluated in unspecified order
+            fprintf (stderr, "%11d,%11d,%6d, ",
+            ^
+
+./search.cc(1685): remark #981: operands are evaluated in unspecified order
+                     ptr->first()->_allchars_length, ptr->first()->_allchars);
+                                                     ^
+
+./search.cc(1684): remark #981: operands are evaluated in unspecified order
+            fprintf (stderr, ", %.*s\n",
+            ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./output.cc
+In file included from ./positions.h(168),
+                 from ./output.h(28),
+                 from ./output.cc(22):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./output.h(28),
+                 from ./output.cc(22):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./output.h(28),
+                 from ./output.cc(22):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./output.h(28),
+                 from ./output.cc(22):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+In file included from ./options.h(298),
+                 from ./output.cc(29):
+./options.icc(26): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::operator[] (Option_Type option) const
+                                   ^
+
+In file included from ./options.h(298),
+                 from ./output.cc(29):
+./options.icc(33): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::set (Option_Type option)
+                            ^
+
+./output.cc(84): remark #981: operands are evaluated in unspecified order
+    if (option[ANSIC] | option[CPLUSPLUS])
+                      ^
+
+./output.cc(249): remark #981: operands are evaluated in unspecified order
+    DYNAMIC_ARRAY (combined_name, char, strlen (prefix) + strlen (name) + 1);
+    ^
+
+./output.cc(325): remark #981: operands are evaluated in unspecified order
+            option[ANSIC] | option[CPLUSPLUS] ?
+                          ^
+
+./output.cc(378): remark #981: operands are evaluated in unspecified order
+            option[ANSIC] | option[CPLUSPLUS] ?
+                          ^
+
+./output.cc(439): remark #981: operands are evaluated in unspecified order
+            option[ANSIC] | option[CPLUSPLUS] ?
+                          ^
+
+./output.cc(808): remark #981: operands are evaluated in unspecified order
+    else if (option[KRC] | option[C] | option[ANSIC])
+                         ^
+
+./output.cc(808): remark #981: operands are evaluated in unspecified order
+    else if (option[KRC] | option[C] | option[ANSIC])
+                                     ^
+
+./output.cc(826): remark #981: operands are evaluated in unspecified order
+    if (option[KRC] | option[C] | option[ANSIC])
+                    ^
+
+./output.cc(826): remark #981: operands are evaluated in unspecified order
+    if (option[KRC] | option[C] | option[ANSIC])
+                                ^
+
+./output.cc(840): remark #981: operands are evaluated in unspecified order
+            option[ANSIC] | option[CPLUSPLUS] ?
+                          ^
+
+./output.cc(1002): remark #981: operands are evaluated in unspecified order
+            option.get_lengthtable_name (),
+            ^
+
+./output.cc(998): remark #981: operands are evaluated in unspecified order
+    printf ("%sstatic %s%s %s[] =\n"
+    ^
+
+./output.cc(1113): remark #981: operands are evaluated in unspecified order
+            option.get_stringpool_name (), indent);
+            ^
+
+./output.cc(1110): remark #981: operands are evaluated in unspecified order
+    printf ("%sstatic %sstruct %s_t %s_contents =\n"
+    ^
+
+./output.cc(1156): remark #981: operands are evaluated in unspecified order
+            option.get_stringpool_name ());
+            ^
+
+./output.cc(1154): remark #981: operands are evaluated in unspecified order
+    printf ("%s#define %s ((%schar *) &%s_contents)\n",
+    ^
+
+./output.cc(1186): remark #981: operands are evaluated in unspecified order
+              option.get_stringpool_name (), option.get_stringpool_name (),
+                                             ^
+
+./output.cc(1185): remark #981: operands are evaluated in unspecified order
+      printf ("(int)(size_t)&((struct %s_t *)0)->%s_str%d",
+      ^
+
+./output.cc(1208): remark #981: operands are evaluated in unspecified order
+                          + strlen (option.get_initializer_suffix()));
+                          ^
+
+./output.cc(1352): remark #981: operands are evaluated in unspecified order
+                       temp->first()->_allchars_length, temp->first()->_allchars, temp->first()->_final_index);
+                                                        ^
+
+./output.cc(1351): remark #981: operands are evaluated in unspecified order
+              fprintf (stderr, "keyword = %.*s, index = %d\n",
+              ^
+
+./output.cc(1514): remark #981: operands are evaluated in unspecified order
+              indent, "", list->first()->_hash_value, list->first()->_allchars_length, list->first()->_allchars);
+                                                      ^
+
+./output.cc(1513): remark #981: operands are evaluated in unspecified order
+      printf ("%*s/* hash value = %4d, keyword = \"%.*s\" */\n",
+      ^
+
+./output.cc(1520): remark #981: operands are evaluated in unspecified order
+                  indent, "", option.get_lengthtable_name (), list->first()->_final_index);
+                                                              ^
+
+./output.cc(1519): remark #981: operands are evaluated in unspecified order
+          printf ("%*slengthptr = &%s[%d];\n",
+          ^
+
+./output.cc(1522): remark #981: operands are evaluated in unspecified order
+                indent, "", option.get_wordlist_name (), list->first()->_final_index);
+                                                         ^
+
+./output.cc(1521): remark #981: operands are evaluated in unspecified order
+        printf ("%*swordptr = &%s[%d];\n",
+        ^
+
+./output.cc(1547): remark #981: operands are evaluated in unspecified order
+          printf ("&%s[%d]", option.get_wordlist_name (), list->first()->_final_index);
+                                                          ^
+
+./output.cc(1547): remark #981: operands are evaluated in unspecified order
+          printf ("&%s[%d]", option.get_wordlist_name (), list->first()->_final_index);
+          ^
+
+./output.cc(1549): remark #981: operands are evaluated in unspecified order
+          output_string (list->first()->_allchars, list->first()->_allchars_length);
+                                                   ^
+
+./output.cc(1549): remark #981: operands are evaluated in unspecified order
+          output_string (list->first()->_allchars, list->first()->_allchars_length);
+          ^
+
+./output.cc(1658): remark #981: operands are evaluated in unspecified order
+            option.get_constants_prefix (), option.get_constants_prefix (),
+                                            ^
+
+./output.cc(1655): remark #981: operands are evaluated in unspecified order
+    printf ("  if (len <= %sMAX_WORD_LENGTH && len >= %sMIN_WORD_LENGTH)\n"
+    ^
+
+./output.cc(1730): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                                                                ^
+
+./output.cc(1730): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                       ^
+
+./output.cc(1760): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                                                                ^
+
+./output.cc(1760): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                       ^
+
+./output.cc(1768): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("resword"));
+                                                                ^
+
+./output.cc(1768): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("resword"));
+                       ^
+
+./output.cc(1806): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                                                                ^
+
+./output.cc(1806): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                       ^
+
+./output.cc(1828): remark #981: operands are evaluated in unspecified order
+                        indent, "", register_scs, option.get_constants_prefix ());
+                                                  ^
+
+./output.cc(1824): remark #981: operands are evaluated in unspecified order
+                printf ("%*s  else if (index < -%sTOTAL_KEYWORDS)\n"
+                ^
+
+./output.cc(1832): remark #981: operands are evaluated in unspecified order
+                          option.get_lengthtable_name (), option.get_constants_prefix ());
+                          ^
+
+./output.cc(1830): remark #981: operands are evaluated in unspecified order
+                  printf ("%*s      %s%s%s *lengthptr = &%s[%sTOTAL_KEYWORDS + lookup[offset]];\n",
+                  ^
+
+./output.cc(1837): remark #981: operands are evaluated in unspecified order
+                        option.get_wordlist_name (), option.get_constants_prefix ());
+                                                     ^
+
+./output.cc(1836): remark #981: operands are evaluated in unspecified order
+                printf ("*wordptr = &%s[%sTOTAL_KEYWORDS + lookup[offset]];\n",
+                ^
+
+./output.cc(1864): remark #981: operands are evaluated in unspecified order
+                comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                                                                    ^
+
+./output.cc(1864): remark #981: operands are evaluated in unspecified order
+                comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                           ^
+
+./output.cc(1948): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                                                                ^
+
+./output.cc(1948): remark #981: operands are evaluated in unspecified order
+            comparison.output_comparison (Output_Expr1 ("str"), Output_Expr1 ("s"));
+                       ^
+
+./output.cc(1996): remark #981: operands are evaluated in unspecified order
+            option[ANSIC] | option[CPLUSPLUS] ?
+                          ^
+
+./output.cc(2045): remark #981: operands are evaluated in unspecified order
+    if (option[C] | option[ANSIC] | option[CPLUSPLUS])
+                  ^
+
+./output.cc(2045): remark #981: operands are evaluated in unspecified order
+    if (option[C] | option[ANSIC] | option[CPLUSPLUS])
+                                  ^
+
+./output.cc(2175): remark #981: operands are evaluated in unspecified order
+              option.get_class_name (), option.get_hash_name (),
+                                        ^
+
+./output.cc(2167): remark #981: operands are evaluated in unspecified order
+      printf ("class %s\n"
+      ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -I. -I./../lib -c ./main.cc
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./main.cc(24):
+./positions.icc(184): remark #522: function "PositionIterator::PositionIterator(const Positions &)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./main.cc(24):
+./positions.icc(192): remark #522: function "PositionIterator::PositionIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionIterator::PositionIterator (Positions const& positions, int maxlen)
+                    ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./main.cc(24):
+./positions.icc(235): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions)
+                           ^
+
+In file included from ./positions.h(168),
+                 from ./options.h(31),
+                 from ./main.cc(24):
+./positions.icc(244): remark #522: function "PositionReverseIterator::PositionReverseIterator(const Positions &, int)" redeclared "inline" after being called
+  PositionReverseIterator::PositionReverseIterator (Positions const& positions, int maxlen)
+                           ^
+
+In file included from ./options.h(298),
+                 from ./main.cc(24):
+./options.icc(26): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::operator[] (Option_Type option) const
+                                   ^
+
+In file included from ./options.h(298),
+                 from ./main.cc(24):
+./options.icc(33): remark #3280: declaration hides variable "option" (declared at line 293 of "./options.h")
+  Options::set (Option_Type option)
+                            ^
+
+icpc.pl -g -O2 -fdebug-prefix-map=/dev/shm/gperf/gperf-3.1=. -Wformat -march=native -pipe -Wformat-security  -o gperf version.o positions.o options.o keyword.o keyword-list.o input.o bool-array.o hash-table.o search.o output.o main.o ../lib/libgp.a -lm
+ipo: remark #11000: performing multi-file optimizations
+ipo: remark #11006: generating object file /tmp/intel/ipo_icpcuG7JQi.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/src'
+cd tests; make all
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/tests'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/tests'
+cd doc; make all
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/doc'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/doc'
+make[1]: Leaving directory '/dev/shm/gperf/gperf-3.1'
+   dh_auto_test
+ fakeroot debian/rules binary
+dh binary
+   dh_auto_test
+   dh_testroot
+   dh_prep
+	rm -f -- debian/gperf.substvars
+	rm -fr -- debian/.debhelper/generated/gperf/ debian/gperf/ debian/tmp/
+   dh_auto_install
+	install -d debian/gperf
+	make -j1 install DESTDIR=/dev/shm/gperf/gperf-3.1/debian/gperf AM_UPDATE_INFO_DIR=no
+make[1]: Entering directory '/dev/shm/gperf/gperf-3.1'
+cd lib; make install
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/lib'
+make[2]: Nothing to be done for 'install'.
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/lib'
+cd src; make install
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/src'
+/bin/sh ./../build-aux/mkinstalldirs /dev/shm/gperf/gperf-3.1/debian/gperf/usr/bin
+mkdir -p -- /dev/shm/gperf/gperf-3.1/debian/gperf/usr/bin
+/usr/bin/install gperf /dev/shm/gperf/gperf-3.1/debian/gperf/usr/bin/gperf
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/src'
+cd tests; make install
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/tests'
+make[2]: Nothing to be done for 'install'.
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/tests'
+cd doc; make install
+make[2]: Entering directory '/dev/shm/gperf/gperf-3.1/doc'
+/bin/sh ./../build-aux/mkinstalldirs /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/info
+mkdir -p -- /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/info
+/usr/bin/install -m 644 ./gperf.info /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/info/gperf.info
+/bin/sh ./../build-aux/mkinstalldirs /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/man/man1
+mkdir -p -- /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/man/man1
+/usr/bin/install -m 644 ./gperf.1 /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/man/man1/gperf.1
+/bin/sh ./../build-aux/mkinstalldirs /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/doc/
+mkdir -p -- /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/doc/
+/usr/bin/install -m 644 ./gperf.html /dev/shm/gperf/gperf-3.1/debian/gperf/usr/share/doc//gperf.html
+make[2]: Leaving directory '/dev/shm/gperf/gperf-3.1/doc'
+make[1]: Leaving directory '/dev/shm/gperf/gperf-3.1'
+   debian/rules override_dh_installdocs
+make[1]: Entering directory '/dev/shm/gperf/gperf-3.1'
+dh_installdocs
+	install -d debian/gperf/usr/share/doc/gperf
+	install -d debian/.debhelper/generated/gperf
+	install -p -m0644 debian/copyright debian/gperf/usr/share/doc/gperf/copyright
+mv debian/gperf/usr/share/doc/gperf.html debian/gperf/usr/share/doc/gperf/
+make[1]: Leaving directory '/dev/shm/gperf/gperf-3.1'
+   dh_installchangelogs
+	install -p -m0644 debian/changelog debian/gperf/usr/share/doc/gperf/changelog.Debian
+	install -p -m0644 ./ChangeLog debian/gperf/usr/share/doc/gperf/changelog
+   dh_installexamples
+   dh_installman
+	man -l --recode UTF-8 ./debian/gperf/usr/share/man/man1/gperf.1 > debian/gperf/usr/share/man/man1/gperf.1.dh-new
+	mv debian/gperf/usr/share/man/man1/gperf.1.dh-new debian/gperf/usr/share/man/man1/gperf.1
+	chmod 0644 -- debian/gperf/usr/share/man/man1/gperf.1
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+	cd debian/gperf
+	chmod a-x usr/share/doc/gperf/changelog usr/share/doc/gperf/changelog.Debian usr/share/info/gperf.info usr/share/man/man1/gperf.1
+	gzip -9nf usr/share/doc/gperf/changelog usr/share/doc/gperf/changelog.Debian usr/share/info/gperf.info usr/share/man/man1/gperf.1
+	cd '/dev/shm/gperf/gperf-3.1'
+   dh_fixperms
+	find debian/gperf -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/gperf ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/gperf/usr/share/doc -type f -a -true -a ! -regex 'debian/gperf/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/gperf/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/gperf/usr/share/man -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/gperf -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/gperf/usr/bin -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod a+x
+   dh_missing
+   dh_strip
+	install -d debian/.debhelper/gperf/dbgsym-root/usr/lib/debug/.build-id/4d
+	objcopy --only-keep-debug --compress-debug-sections debian/gperf/usr/bin/gperf debian/.debhelper/gperf/dbgsym-root/usr/lib/debug/.build-id/4d/6df33b5dc577d129d6c70e90942d2f26cfc3d2.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/gperf/dbgsym-root/usr/lib/debug/.build-id/4d/6df33b5dc577d129d6c70e90942d2f26cfc3d2.debug
+	chown 0:0 -- debian/.debhelper/gperf/dbgsym-root/usr/lib/debug/.build-id/4d/6df33b5dc577d129d6c70e90942d2f26cfc3d2.debug
+	strip --remove-section=.comment --remove-section=.note debian/gperf/usr/bin/gperf
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/gperf/dbgsym-root/usr/lib/debug/.build-id/4d/6df33b5dc577d129d6c70e90942d2f26cfc3d2.debug debian/gperf/usr/bin/gperf
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/gperf/dbgsym-root/usr/share/doc
+	ln -s gperf debian/.debhelper/gperf/dbgsym-root/usr/share/doc/gperf-dbgsym
+   dh_makeshlibs
+	rm -f debian/gperf/DEBIAN/shlibs
+   dh_shlibdeps
+	install -d debian/gperf/DEBIAN
+	dpkg-shlibdeps -Tdebian/gperf.substvars debian/gperf/usr/bin/gperf
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+   dh_installdeb
+   dh_gencontrol
+	echo misc:Depends= >> debian/gperf.substvars
+	echo misc:Pre-Depends= >> debian/gperf.substvars
+	install -d debian/.debhelper/gperf/dbgsym-root/DEBIAN
+	dpkg-gencontrol -pgperf -ldebian/changelog -Tdebian/gperf.substvars -Pdebian/.debhelper/gperf/dbgsym-root -UPre-Depends -URecommends -USuggests -UEnhances -UProvides -UEssential -UConflicts -DPriority=optional -UHomepage -UImportant -DAuto-Built-Package=debug-symbols -DPackage=gperf-dbgsym "-DDepends=gperf (= \${binary:Version})" "-DDescription=debug symbols for gperf" -DBuild-Ids=4d6df33b5dc577d129d6c70e90942d2f26cfc3d2 -DSection=debug -UMulti-Arch -UReplaces -UBreaks
+	chmod 0644 -- debian/.debhelper/gperf/dbgsym-root/DEBIAN/control
+	chown 0:0 -- debian/.debhelper/gperf/dbgsym-root/DEBIAN/control
+	dpkg-gencontrol -pgperf -ldebian/changelog -Tdebian/gperf.substvars -Pdebian/gperf
+	chmod 0644 -- debian/gperf/DEBIAN/control
+	chown 0:0 -- debian/gperf/DEBIAN/control
+   dh_md5sums
+	cd debian/gperf >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/gperf/DEBIAN/md5sums
+	chown 0:0 -- debian/gperf/DEBIAN/md5sums
+	cd debian/.debhelper/gperf/dbgsym-root >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/.debhelper/gperf/dbgsym-root/DEBIAN/md5sums
+	chown 0:0 -- debian/.debhelper/gperf/dbgsym-root/DEBIAN/md5sums
+   dh_builddeb
+	dpkg-deb --build debian/gperf ..
+	dpkg-deb --build debian/.debhelper/gperf/dbgsym-root ..
+dpkg-deb: building package 'gperf' in '../gperf_3.1-1_amd64.deb'.
+dpkg-deb: building package 'gperf-dbgsym' in '../gperf-dbgsym_3.1-1_amd64.deb'.
+FAKEROOTKEY=1214251334 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../gperf_3.1-1_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-source: info: using options from gperf-3.1/debian/source/options: --extend-diff-ignore=doc/.*\.(html|info)$
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian gperf_3.1-1_amd64.changes ...
+strings: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+W: gperf: hardening-no-pie usr/bin/gperf
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+Finished running lintian.

@@ -1,0 +1,120 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -I./../lib -diag-disable=10013,10385,10237,10346 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=99999 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -c -o positions.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 99999 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: Positions::contains(const Positions *, int) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Positions::contains(const Positions *, int) const) [1/7=14.3%] ./positions.cc(34,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::add(Positions *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Positions::add(Positions *, int)) [2/7=28.6%] ./positions.cc(50,1)
+  -> INLINE (MANUAL): (51,3) Positions::set_useall(Positions *, bool) (isz = 19) (sz = 26)
+  -> INLINE: (57,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (58,7) exit(int)
+  -> INLINE: (67,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (68,11) exit(int)
+
+===========================================================================
+
+Begin optimization report for: Positions::set_useall(Positions *, bool)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::set_useall(Positions *, bool)) ./positions.icc(98,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::remove(Positions *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Positions::remove(Positions *, int)) [4/7=57.1%] ./positions.cc(80,1)
+  -> INLINE (MANUAL): (81,3) Positions::set_useall(Positions *, bool) (isz = 19) (sz = 26)
+  -> INLINE: (117,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (118,3) exit(int)
+
+===========================================================================
+
+Begin optimization report for: Positions::print(const Positions *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Positions::print(const Positions *) const) [5/7=71.4%] ./positions.cc(124,1)
+  -> INLINE: (126,5) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE: (142,17) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE: (143,15) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE: (146,19) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE: (153,19) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE: (161,13) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE: (162,11) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+
+===========================================================================
+
+Begin optimization report for: fprintf(FILE *, const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fprintf(FILE *, const char *, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(99,1)
+
+===========================================================================
+
+Begin optimization report for: printf(const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (printf(const char *, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(106,1)
+
+===========================================================================

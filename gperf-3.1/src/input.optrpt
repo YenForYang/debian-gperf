@@ -1,0 +1,752 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -I./../lib -diag-disable=10013,10385,10237,10346 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=99999 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -c -o input.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 99999 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: atoi(const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (atoi(const char *))/usr/include/stdlib.h(362,1)
+
+===========================================================================
+
+Begin optimization report for: Keyword_List::rest(Keyword_List *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Keyword_List::rest(Keyword_List *)) ./keyword-list.icc(33,1)
+
+===========================================================================
+
+Begin optimization report for: Input::Input(Input *, FILE *, Keyword_Factory *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Input::Input(Input *, FILE *, Keyword_Factory *)) [3/20=15.0%] ./input.cc(33,1)
+
+===========================================================================
+
+Begin optimization report for: Input::Input(Input *const, FILE *, Keyword_Factory *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Input::Input(Input *const, FILE *, Keyword_Factory *)) [4/20=20.0%] ./input.cc(31,8)
+  -> INLINE: (31,8) Input::Input(Input *, FILE *, Keyword_Factory *) (isz = 1) (sz = 9)
+
+===========================================================================
+
+Begin optimization report for: Input::~Input(Input *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Input::~Input(Input *)) [5/20=25.0%] ./input.cc(1002,1)
+  -> EXTERN: (1004,3) operator delete[](void *, unsigned long)
+  -> EXTERN: (1005,3) operator delete[](void *, unsigned long)
+  -> EXTERN: (1006,3) operator delete[](void *, unsigned long)
+  -> EXTERN: (1007,3) operator delete[](void *, unsigned long)
+
+===========================================================================
+
+Begin optimization report for: Input::~Input(Input *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Input::~Input(Input *const)) [6/20=30.0%] ./input.cc(1001,8)
+  -> INLINE: (1001,8) Input::~Input(Input *) (isz = 30) (sz = 35)
+    -> EXTERN: (1004,3) operator delete[](void *, unsigned long)
+    -> EXTERN: (1005,3) operator delete[](void *, unsigned long)
+    -> EXTERN: (1006,3) operator delete[](void *, unsigned long)
+    -> EXTERN: (1007,3) operator delete[](void *, unsigned long)
+
+===========================================================================
+
+Begin optimization report for: Input::read_input(Input *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Input::read_input(Input *)) [7/20=35.0%] ./input.cc(231,1)
+  -> EXTERN: (254,22) get_delim(char **, size_t *, int, FILE *)
+  -> EXTERN: (257,11) ferror(FILE *)
+  -> INLINE: (258,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (259,18) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (261,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (262,18) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (263,7) exit(int)
+  -> EXTERN: (279,30) ?1memset
+  -> EXTERN: (280,38) ?1memset
+  -> INLINE (MANUAL): (294,30) memchr(const void *, int, size_t) (isz = 2) (sz = 13)
+    -> EXTERN: /usr/include/string.h:(85,10) __builtin_memchr(const void *, int, unsigned long)
+  -> INLINE (MANUAL): (305,19) Options::operator[](const Options *, Option_Type) const (isz = 2) (sz = 10)
+  -> INLINE (MANUAL): (317,36) memchr(const void *, int, size_t) (isz = 2) (sz = 13)
+    -> EXTERN: /usr/include/string.h:(85,10) __builtin_memchr(const void *, int, unsigned long)
+  -> INLINE: (347,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (348,20) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (393,35) memchr(const void *, int, size_t) (isz = 2) (sz = 13)
+    -> EXTERN: /usr/include/string.h:(85,10) __builtin_memchr(const void *, int, unsigned long)
+  -> INLINE: (406,21) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (408,30) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (410,30) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (411,21) exit(int)
+  -> INLINE: (421,21) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (423,30) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (424,21) exit(int)
+  -> INLINE: (428,21) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (430,30) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (431,21) exit(int)
+  -> INLINE: (448,19) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (450,28) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (455,17) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (458,26) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (464,21) is_declaration_with_arg(const char *, const char *, unsigned int, const char *, char **) (isz = 190) (sz = 208)
+    -> INLINE: (118,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (119,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (120,7) exit(int)
+    -> EXTERN: (125,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (125,42) operator new[](unsigned long)
+    -> INLINE: (138,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (139,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (140,7) exit(int)
+  -> EXTERN: (466,26) Options::set_delimiters(Options *, const char *)
+  -> INLINE: (469,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (470,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (473,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (474,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (477,21) is_declaration_with_arg(const char *, const char *, unsigned int, const char *, char **) (isz = 190) (sz = 208)
+    -> INLINE: (118,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (119,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (120,7) exit(int)
+    -> EXTERN: (125,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (125,42) operator new[](unsigned long)
+    -> INLINE: (138,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (139,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (140,7) exit(int)
+  -> EXTERN: (479,26) Options::set_language(Options *, const char *)
+  -> INLINE: (482,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (484,26) Options::set_slot_name(Options *, const char *)
+  -> INLINE: (487,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (489,26) Options::set_initializer_suffix(Options *, const char *)
+  -> INLINE: (492,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (494,26) Options::set_hash_name(Options *, const char *)
+  -> INLINE: (497,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (499,26) Options::set_function_name(Options *, const char *)
+  -> INLINE: (502,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (504,26) Options::set_class_name(Options *, const char *)
+  -> INLINE: (507,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (508,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (511,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (512,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (515,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (516,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (519,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (520,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (523,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (524,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (527,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (528,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (531,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (532,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (535,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (536,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (539,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (541,26) Options::set_stringpool_name(Options *, const char *)
+  -> INLINE: (544,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (545,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (548,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (550,26) Options::set_constants_prefix(Options *, const char *)
+  -> INLINE: (553,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (555,26) Options::set_wordlist_name(Options *, const char *)
+  -> INLINE: (558,21) is_define_declaration(const char *, const char *, unsigned int, const char *, char **) (isz = 268) (sz = 289)
+    -> INLINE: (196,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (198,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (199,7) exit(int)
+    -> EXTERN: (206,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (206,42) operator new[](unsigned long)
+    -> INLINE: (219,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (220,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (221,7) exit(int)
+  -> EXTERN: (560,26) Options::set_lengthtable_name(Options *, const char *)
+  -> INLINE: (563,21) is_declaration_with_arg(const char *, const char *, unsigned int, const char *, char **) (isz = 190) (sz = 208)
+    -> INLINE: (118,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (119,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (120,7) exit(int)
+    -> EXTERN: (125,42) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (125,42) operator new[](unsigned long)
+    -> INLINE: (138,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (139,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (140,7) exit(int)
+  -> EXTERN: (566,28) Options::set_total_switches(Options *, int)
+  -> INLINE (MANUAL): (566,48) atoi(const char *) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/stdlib.h:(363,16) strtol(const char *, char **, int)
+  -> INLINE (MANUAL): (567,32) Options::get_total_switches(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (569,25) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (571,34) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (572,25) exit(int)
+  -> INLINE: (577,21) is_declaration(const char *, const char *, unsigned int, const char *) (isz = 109) (sz = 125)
+    -> INLINE: (79,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (80,16) pretty_input_file_name() (isz = 11) (sz = 17)
+      -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> EXTERN: (81,7) exit(int)
+  -> INLINE (MANUAL): (578,26) Options::set(Options *, Option_Type) (isz = 1) (sz = 8)
+  -> INLINE: (582,21) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (583,30) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (584,21) exit(int)
+  -> EXTERN: (592,45) strlen(const char *)
+  -> EXTERN: (595,46) operator new[](unsigned long)
+  -> EXTERN: (595,46) __cxa_throw_bad_array_new_length()
+  -> INLINE (MANUAL): (597,15) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> INLINE (MANUAL): (598,13) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (601,15) operator delete[](void *, unsigned long)
+  -> EXTERN: (604,56) operator new[](unsigned long)
+  -> EXTERN: (604,56) __cxa_throw_bad_array_new_length()
+  -> INLINE (MANUAL): (607,15) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (611,15) operator delete[](void *, unsigned long)
+  -> INLINE: (621,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (622,18) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (623,9) exit(int)
+  -> INLINE (MANUAL): (627,15) Options::operator[](const Options *, Option_Type) const (isz = 2) (sz = 10)
+  -> EXTERN: (685,32) strlen(const char *)
+  -> EXTERN: (686,58) operator new[](unsigned long)
+  -> EXTERN: (686,58) __cxa_throw_bad_array_new_length()
+  -> INLINE (MANUAL): (687,19) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (688,19) operator delete[](void *, unsigned long)
+  -> EXTERN: (694,42) strlen(const char *)
+  -> INLINE: (702,13) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (704,22) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (705,13) exit(int)
+  -> EXTERN: (709,28) strlen(const char *)
+  -> EXTERN: (712,58) operator new[](unsigned long)
+  -> EXTERN: (712,58) __cxa_throw_bad_array_new_length()
+  -> INLINE (MANUAL): (713,15) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (716,15) operator delete[](void *, unsigned long)
+  -> EXTERN: (732,57) __cxa_throw_bad_array_new_length()
+  -> EXTERN: (732,57) operator new[](unsigned long)
+  -> INLINE (MANUAL): (733,9) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (739,58) __cxa_throw_bad_array_new_length()
+  -> EXTERN: (739,58) operator new[](unsigned long)
+  -> INLINE (MANUAL): (740,9) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (748,7) operator delete[](void *, unsigned long)
+  -> INLINE (MANUAL): (754,37) Options::get_delimiters(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (760,35) memchr(const void *, int, size_t) (isz = 2) (sz = 13)
+    -> EXTERN: /usr/include/string.h:(85,10) __builtin_memchr(const void *, int, unsigned long)
+  -> INLINE: (770,13) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (774,22) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (775,13) exit(int)
+  -> EXTERN: (787,46) __cxa_throw_bad_array_new_length()
+  -> EXTERN: (787,46) operator new[](unsigned long)
+  -> INLINE: (795,25) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (796,34) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (797,25) exit(int)
+  -> INLINE: (818,33) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (820,42) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (843,33) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (845,42) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (847,33) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (849,42) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (894,29) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (896,38) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (897,29) exit(int)
+  -> INLINE (MANUAL): (913,25) strchr(const char *, int) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/string.h:(220,10) __builtin_strchr(const char *, int)
+  -> INLINE: (915,25) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (917,34) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (918,25) exit(int)
+  -> INLINE (MANUAL): (923,27) Options::operator[](const Options *, Option_Type) const (isz = 2) (sz = 10)
+  -> EXTERN: (925,64) operator new[](unsigned long)
+  -> EXTERN: (925,64) __cxa_throw_bad_array_new_length()
+  -> INLINE (MANUAL): (926,21) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> INLINE (MANUAL): (948,25) strchr(const char *, int) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/string.h:(220,10) __builtin_strchr(const char *, int)
+  -> INLINE (MANUAL): (953,35) Options::operator[](const Options *, Option_Type) const (isz = 2) (sz = 10)
+  -> EXTERN: (955,72) __cxa_throw_bad_array_new_length()
+  -> EXTERN: (955,72) operator new[](unsigned long)
+  -> INLINE (MANUAL): (956,29) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> INDIRECT- (VIRTUAL): (975,57)  EXPR_CONV.SI64.P64(*((SI64*) ((this_820_V$7a.0.7->_factory_V$62)->__vptr_V$112 + 16(I64))))
+     [[ Unable to inline indirect callsite  <1>]]
+  -> EXTERN: (977,13) operator delete(void *, unsigned long)
+  -> EXTERN: (977,13) operator new(unsigned long)
+  -> EXTERN: (977,44) Keyword_List::Keyword_List(Keyword_List *, Keyword *)
+  -> INLINE (MANUAL): (978,40) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE: (988,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (989,18) pretty_input_file_name() (isz = 11) (sz = 17)
+    -> INLINE (MANUAL): (41,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (42,19) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (990,9) exit(int)
+
+===========================================================================
+
+Begin optimization report for: Options::operator[](const Options *, Option_Type) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::operator[](const Options *, Option_Type) const) ./options.icc(27,1)
+
+===========================================================================
+
+Begin optimization report for: Options::get_input_file_name(const Options *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::get_input_file_name(const Options *) const) ./options.icc(41,1)
+
+===========================================================================
+
+Begin optimization report for: Options::get_delimiters(const Options *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::get_delimiters(const Options *) const) ./options.icc(153,1)
+
+===========================================================================
+
+Begin optimization report for: Options::get_total_switches(const Options *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::get_total_switches(const Options *) const) ./options.icc(76,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set(Options *, Option_Type)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::set(Options *, Option_Type)) ./options.icc(34,1)
+
+===========================================================================
+
+Begin optimization report for: fprintf(FILE *, const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fprintf(FILE *, const char *, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(99,1)
+
+===========================================================================
+
+Begin optimization report for: memchr(const void *, int, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (memchr(const void *, int, size_t))/usr/include/string.h(84,1)
+
+===========================================================================
+
+Begin optimization report for: strchr(const char *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (strchr(const char *, int))/usr/include/string.h(219,1)
+
+===========================================================================
+
+Begin optimization report for: memcpy(void *, const void *, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (memcpy(void *, const void *, size_t))/usr/include/x86_64-linux-gnu/bits/string_fortified.h(33,1)
+
+===========================================================================
+
+Begin optimization report for: pretty_input_file_name()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (pretty_input_file_name()) ./input.cc(40,1)
+
+===========================================================================
+
+Begin optimization report for: is_declaration(const char *, const char *, unsigned int, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (is_declaration(const char *, const char *, unsigned int, const char *)) ./input.cc(51,1)
+
+===========================================================================
+
+Begin optimization report for: is_declaration_with_arg(const char *, const char *, unsigned int, const char *, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (is_declaration_with_arg(const char *, const char *, unsigned int, const char *, char **)) ./input.cc(94,1)
+
+===========================================================================
+
+Begin optimization report for: is_define_declaration(const char *, const char *, unsigned int, const char *, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (is_define_declaration(const char *, const char *, unsigned int, const char *, char **)) ./input.cc(154,1)
+
+===========================================================================
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING FOOTNOTES:
+
+<1> The indirectly called function must be resolved to its targets before it 
+can be inlined.  Consider compiling with -ipo or -prof-gen followed by 
+-prof-use.
+

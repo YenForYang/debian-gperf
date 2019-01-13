@@ -1,0 +1,30 @@
+Format: 1.8
+Date: Sun, 23 Jul 2017 16:18:08 +0200
+Source: gperf
+Binary: gperf
+Built-For-Profiles: nobiarch nocheck nodoc
+Architecture: amd64
+Version: 3.1-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Hilko Bengen <bengen@debian.org>
+Changed-By: Hilko Bengen <bengen@debian.org>
+Description:
+ gperf      - Perfect hash function generator
+Changes:
+ gperf (3.1-1) unstable; urgency=medium
+ .
+   * New upstream version 3.1
+   * Rebase patches
+Checksums-Sha1:
+ 454aeac8bc3c000004bd3b6854ab87460ee6aaf6 76632 gperf-dbgsym_3.1-1_amd64.deb
+ 82448a1e62103db905e52ef87f4a0a792ff08ab3 5607 gperf_3.1-1_amd64.buildinfo
+ 80514bc656def20d2f77412ac20a5f19c61ead44 174224 gperf_3.1-1_amd64.deb
+Checksums-Sha256:
+ 68ec7963ac9f658c42f815ffbd3ce47e18ad291c41bf9b575b600526bab132a6 76632 gperf-dbgsym_3.1-1_amd64.deb
+ 9bafaa87604633ed7d0bead8cdabb76291773636bc7e3746a079f551218c6f0a 5607 gperf_3.1-1_amd64.buildinfo
+ 8369a5d1beac020ad3aa4e2bb060dd336377f21208de0489cf5985e814693c56 174224 gperf_3.1-1_amd64.deb
+Files:
+ 7973992c5333b933159197f358e70d05 76632 debug optional gperf-dbgsym_3.1-1_amd64.deb
+ 96ac86b06d63a356e7689ed221073b9c 5607 devel optional gperf_3.1-1_amd64.buildinfo
+ 397bd4858dd74a1bddb324c9f3d2036c 174224 devel optional gperf_3.1-1_amd64.deb

@@ -1,0 +1,929 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -I./../lib -diag-disable=10013,10385,10237,10346 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=99999 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -c -o options.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 99999 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: __sti__$E()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__sti__$E()) [1/41=2.4%] <compiler generated>
+  -> EXTERN: ./options.cc:(33,9) __cxa_atexit(void (*)(void *), void *, void *)
+  -> INLINE: ./options.cc:(33,9) Options::Options(Options *) (isz = 42) (sz = 47)
+    -> INLINE (MANUAL): (456,10) Positions::Positions(Positions *) (isz = 2) (sz = 7)
+
+===========================================================================
+
+Begin optimization report for: atoi(const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (atoi(const char *))/usr/include/stdlib.h(362,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::Positions(Positions *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::Positions(Positions *)) ./positions.icc(33,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::is_useall(const Positions *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::is_useall(const Positions *) const) ./positions.icc(78,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::get_size(const Positions *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::get_size(const Positions *) const) ./positions.icc(90,1)
+
+===========================================================================
+
+Begin optimization report for: PositionIterator::PositionIterator(PositionIterator *, const Positions &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (PositionIterator::PositionIterator(PositionIterator *, const Positions &)) ./positions.icc(187,1)
+
+===========================================================================
+
+Begin optimization report for: PositionIterator::next(PositionIterator *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (PositionIterator::next(PositionIterator *)) ./positions.icc(211,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::iterator(PositionIterator *, const Positions *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::iterator(PositionIterator *, const Positions *) const) ./positions.icc(153,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::set_useall(Positions *, bool)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::set_useall(Positions *, bool)) ./positions.icc(98,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::pointer(Positions *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::pointer(Positions *)) ./positions.icc(112,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::set_size(Positions *, unsigned int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::set_size(Positions *, unsigned int)) ./positions.icc(118,1)
+
+===========================================================================
+
+Begin optimization report for: Positions::sort(Positions *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Positions::sort(Positions *)) ./positions.icc(126,1)
+
+===========================================================================
+
+Begin optimization report for: Options::Options(Options *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::Options(Options *)) [13/41=31.7%] ./options.cc(477,1)
+  -> INLINE (MANUAL): (456,10) Positions::Positions(Positions *) (isz = 2) (sz = 7)
+
+===========================================================================
+
+Begin optimization report for: Options::Options(Options *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::Options(Options *const)) [14/41=34.1%] ./options.cc(456,10)
+  -> INLINE: (456,10) Options::Options(Options *) (isz = 42) (sz = 47)
+    -> INLINE (MANUAL): (456,10) Positions::Positions(Positions *) (isz = 2) (sz = 7)
+
+===========================================================================
+
+Begin optimization report for: Options::~Options(Options *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::~Options(Options *)) [15/41=36.6%] ./options.cc(483,1)
+  -> EXTERN: (483,1) __cxa_call_unexpected
+  -> INLINE: (486,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (546,26) Positions::is_useall(const Positions *) const (isz = 0) (sz = 6)
+  -> INLINE: (547,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (550,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (551,35) Positions::get_size(const Positions *) const (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (553,50) Positions::iterator(PositionIterator *, const Positions *) const (isz = 1) (sz = 8)
+    -> INLINE (MANUAL): ./positions.icc:(154,29) PositionIterator::PositionIterator(PositionIterator *, const Positions &) (isz = 1) (sz = 8)
+  -> INLINE (MANUAL): (554,37) PositionIterator::next(PositionIterator *) (isz = 15) (sz = 22)
+  -> INLINE (MANUAL): (554,37) PositionIterator::next(PositionIterator *) (isz = 15) (sz = 22)
+  -> INLINE: (556,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (558,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (561,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+
+===========================================================================
+
+Begin optimization report for: Options::~Options(Options *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::~Options(Options *const)) [16/41=39.0%] ./options.cc(482,10)
+  -> INLINE: (482,10) Options::~Options(Options *) (isz = 327) (sz = 332)
+    -> EXTERN: (483,1) __cxa_call_unexpected
+    -> INLINE: (486,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE (MANUAL): (546,26) Positions::is_useall(const Positions *) const (isz = 0) (sz = 6)
+    -> INLINE: (547,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (550,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE (MANUAL): (551,35) Positions::get_size(const Positions *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (553,50) Positions::iterator(PositionIterator *, const Positions *) const (isz = 1) (sz = 8)
+      -> INLINE (MANUAL): ./positions.icc:(154,29) PositionIterator::PositionIterator(PositionIterator *, const Positions &) (isz = 1) (sz = 8)
+    -> INLINE (MANUAL): (554,37) PositionIterator::next(PositionIterator *) (isz = 15) (sz = 22)
+    -> INLINE (MANUAL): (554,37) PositionIterator::next(PositionIterator *) (isz = 15) (sz = 22)
+    -> INLINE: (556,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (558,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (561,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+
+===========================================================================
+
+Begin optimization report for: Options::parse_options(Options *, int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::parse_options(Options *, int, char **)) [17/41=41.5%] ./options.cc(735,1)
+  -> EXTERN: (743,13) getopt_long(int, char *const *, const char *, const option *, int *)
+  -> EXTERN: (743,13) getopt_long(int, char *const *, const char *, const option *, int *)
+  -> INLINE: (765,13) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (800,13) Options::long_usage(FILE *) (isz = 266) (sz = 271)
+    -> INLINE: (83,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (85,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (86,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (89,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (90,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (93,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (94,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (96,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (98,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (101,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (102,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (104,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (109,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (115,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (119,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (120,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (122,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (127,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (128,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (130,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (133,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (137,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (141,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (145,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (148,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (150,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (155,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (158,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (161,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (164,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (167,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (171,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (175,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (179,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (182,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (185,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (189,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (193,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (204,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (209,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (210,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (212,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (223,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (226,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (232,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (236,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (241,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (244,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (247,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (260,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (261,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (267,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+    -> INLINE: (268,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (801,13) exit(int)
+  -> INLINE (MANUAL): (810,40) atoi(const char *) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/stdlib.h:(363,16) strtol(const char *, char **, int)
+  -> INLINE: (811,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (812,23) Options::operator[](const Options *, Option_Type) const (isz = 2) (sz = 10)
+  -> INLINE: (813,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (823,26) atoi(const char *) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/stdlib.h:(363,16) strtol(const char *, char **, int)
+  -> INLINE: (825,17) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (826,17) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (827,17) exit(int)
+  -> INLINE: (830,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (839,120) PositionStringParser::PositionStringParser(PositionStringParser *, const char *, int, int, int, int, int) (isz = 6) (sz = 23)
+  -> INLINE (MANUAL): (842,30) Positions::set_useall(Positions *, bool) (isz = 19) (sz = 26)
+  -> INLINE (MANUAL): (845,32) Positions::set_useall(Positions *, bool) (isz = 19) (sz = 26)
+  -> INLINE (MANUAL): (846,53) Positions::pointer(Positions *) (isz = 1) (sz = 7)
+  -> INLINE: (849,64) PositionStringParser::nextPosition(PositionStringParser *) (isz = 160) (sz = 173)
+    -> EXTERN: (418,36) isdigit(int)
+    -> EXTERN: (418,36) isdigit(int)
+    -> EXTERN: (428,24) isdigit(int)
+    -> EXTERN: (428,24) isdigit(int)
+  -> INLINE: (849,64) PositionStringParser::nextPosition(PositionStringParser *) (isz = 160) (sz = 173)
+    -> EXTERN: (418,36) isdigit(int)
+    -> EXTERN: (418,36) isdigit(int)
+    -> EXTERN: (428,24) isdigit(int)
+    -> EXTERN: (428,24) isdigit(int)
+  -> INLINE: (853,25) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (855,25) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (856,25) exit(int)
+  -> INLINE: (864,25) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (865,25) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (866,25) exit(int)
+  -> INLINE: (877,21) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (878,21) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (879,21) exit(int)
+  -> INLINE (MANUAL): (881,32) Positions::set_size(Positions *, unsigned int) (isz = 0) (sz = 6)
+  -> INLINE (MANUAL): (886,38) Positions::sort(Positions *) (isz = 55) (sz = 63)
+  -> INLINE: (888,21) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (889,21) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (890,21) exit(int)
+  -> INLINE: (908,13) Options::set_language(Options *, const char *) (isz = 60) (sz = 67)
+    -> EXTERN: (574,12) strcmp(const char *, const char *)
+    -> EXTERN: (576,17) strcmp(const char *, const char *)
+    -> EXTERN: (578,17) strcmp(const char *, const char *)
+    -> EXTERN: (580,17) strcmp(const char *, const char *)
+    -> INLINE: (584,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (913,37) atoi(const char *) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/stdlib.h:(363,16) strtol(const char *, char **, int)
+  -> INLINE: (915,17) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (950,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (960,25) strtod(const char *, char **)
+  -> EXTERN: (968,35) strtod(const char *, char **)
+  -> INLINE: (977,17) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (978,17) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (979,17) exit(int)
+  -> INLINE: (990,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (992,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (998,31) atoi(const char *) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/stdlib.h:(363,16) strtol(const char *, char **, int)
+  -> INLINE: (1001,17) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (1002,17) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (1003,17) exit(int)
+  -> INLINE: (1018,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (1019,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (1025,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (1027,11) exit(int)
+  -> INLINE: (1069,11) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (1070,11) exit(int)
+  -> INLINE: (1080,7) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (1081,7) Options::short_usage(FILE *) (isz = 4) (sz = 9)
+    -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (1082,7) exit(int)
+
+===========================================================================
+
+Begin optimization report for: Options::operator[](const Options *, Option_Type) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::operator[](const Options *, Option_Type) const) ./options.icc(27,1)
+
+===========================================================================
+
+Begin optimization report for: Options::long_usage(FILE *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::long_usage(FILE *)) [19/41=46.3%] ./options.cc(82,1)
+  -> INLINE: (83,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (85,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (86,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (89,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (90,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (93,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (94,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (96,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (98,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (101,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (102,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (104,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (109,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (115,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (119,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (120,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (122,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (127,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (128,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (130,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (133,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (137,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (141,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (145,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (148,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (150,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (155,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (158,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (161,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (164,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (167,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (171,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (175,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (179,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (182,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (185,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (189,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (193,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (204,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (209,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (210,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (212,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (223,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (226,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (232,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (236,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (241,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (244,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (247,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (260,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (261,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (267,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (268,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+
+===========================================================================
+
+Begin optimization report for: Options::print_options(const Options *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::print_options(const Options *) const) [20/41=48.8%] ./options.cc(276,1)
+  -> INLINE: (277,3) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (286,11) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (290,15) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (297,19) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (303,19) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (308,11) strpbrk(const char *, const char *) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/string.h:(297,10) __builtin_strpbrk(const char *, const char *)
+  -> INLINE (MANUAL): (310,15) strchr(const char *, int) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/string.h:(220,10) __builtin_strchr(const char *, int)
+  -> INLINE (MANUAL): (312,15) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (316,21) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (317,19) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (319,15) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (323,15) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (327,21) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (328,19) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE (MANUAL): (330,15) putchar(int) (isz = 2) (sz = 9)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio.h:(84,10) putc(int, FILE *)
+  -> INLINE: (334,9) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE: (336,7) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+  -> INLINE: (339,3) printf(const char *, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack()
+
+===========================================================================
+
+Begin optimization report for: Options::set_language(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_language(Options *, const char *)) [21/41=51.2%] ./options.cc(569,1)
+  -> EXTERN: (574,12) strcmp(const char *, const char *)
+  -> EXTERN: (576,17) strcmp(const char *, const char *)
+  -> EXTERN: (578,17) strcmp(const char *, const char *)
+  -> EXTERN: (580,17) strcmp(const char *, const char *)
+  -> INLINE: (584,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+
+===========================================================================
+
+Begin optimization report for: Options::set_function_name(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_function_name(Options *, const char *)) [22/41=53.7%] ./options.cc(606,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_class_name(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_class_name(Options *, const char *)) [23/41=56.1%] ./options.cc(630,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_constants_prefix(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_constants_prefix(Options *, const char *)) [24/41=58.5%] ./options.cc(662,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_delimiters(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_delimiters(Options *, const char *)) [25/41=61.0%] ./options.cc(678,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_hash_name(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_hash_name(Options *, const char *)) [26/41=63.4%] ./options.cc(638,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_total_switches(Options *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_total_switches(Options *, int)) [27/41=65.9%] ./options.cc(595,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_slot_name(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_slot_name(Options *, const char *)) [28/41=68.3%] ./options.cc(614,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_lengthtable_name(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_lengthtable_name(Options *, const char *)) [29/41=70.7%] ./options.cc(654,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_stringpool_name(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_stringpool_name(Options *, const char *)) [30/41=73.2%] ./options.cc(670,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_wordlist_name(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_wordlist_name(Options *, const char *)) [31/41=75.6%] ./options.cc(646,1)
+
+===========================================================================
+
+Begin optimization report for: Options::short_usage(FILE *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::short_usage(FILE *)) [32/41=78.0%] ./options.cc(75,1)
+  -> INLINE: (76,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+
+===========================================================================
+
+Begin optimization report for: PositionStringParser::PositionStringParser(PositionStringParser *, const char *, int, int, int, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (PositionStringParser::PositionStringParser(PositionStringParser *, const char *, int, int, int, int, int)) [33/41=80.5%] ./options.cc(385,1)
+
+===========================================================================
+
+Begin optimization report for: PositionStringParser::PositionStringParser(PositionStringParser *const, const char *, int, int, int, int, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (PositionStringParser::PositionStringParser(PositionStringParser *const, const char *, int, int, int, int, int)) [34/41=82.9%] ./options.cc(375,23)
+  -> INLINE: (375,23) PositionStringParser::PositionStringParser(PositionStringParser *, const char *, int, int, int, int, int) (isz = 6) (sz = 23)
+
+===========================================================================
+
+Begin optimization report for: PositionStringParser::nextPosition(PositionStringParser *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (PositionStringParser::nextPosition(PositionStringParser *)) [35/41=85.4%] ./options.cc(391,1)
+  -> EXTERN: (418,36) isdigit(int)
+  -> EXTERN: (418,36) isdigit(int)
+  -> EXTERN: (428,24) isdigit(int)
+  -> EXTERN: (428,24) isdigit(int)
+
+===========================================================================
+
+Begin optimization report for: putchar(int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (putchar(int))/usr/include/x86_64-linux-gnu/bits/stdio.h(83,1)
+
+===========================================================================
+
+Begin optimization report for: fprintf(FILE *, const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fprintf(FILE *, const char *, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(99,1)
+
+===========================================================================
+
+Begin optimization report for: printf(const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (printf(const char *, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(106,1)
+
+===========================================================================
+
+Begin optimization report for: strchr(const char *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (strchr(const char *, int))/usr/include/string.h(219,1)
+
+===========================================================================
+
+Begin optimization report for: strpbrk(const char *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (strpbrk(const char *, const char *))/usr/include/string.h(296,1)
+
+===========================================================================
+
+Begin optimization report for: Options::set_initializer_suffix(Options *, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Options::set_initializer_suffix(Options *, const char *)) [41/41=100.0%] ./options.cc(622,1)
+
+===========================================================================

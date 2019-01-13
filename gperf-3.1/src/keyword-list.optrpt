@@ -1,0 +1,193 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -I./../lib -diag-disable=10013,10385,10237,10346 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=99999 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -c -o keyword-list.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 99999 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: Keyword_List::Keyword_List(Keyword_List *, Keyword *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Keyword_List::Keyword_List(Keyword_List *, Keyword *)) [1/12=8.3%] ./keyword-list.cc(31,1)
+
+===========================================================================
+
+Begin optimization report for: Keyword_List::Keyword_List(Keyword_List *const, Keyword *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Keyword_List::Keyword_List(Keyword_List *const, Keyword *)) [2/12=16.7%] ./keyword-list.cc(29,15)
+  -> INLINE: (29,15) Keyword_List::Keyword_List(Keyword_List *, Keyword *) (isz = 1) (sz = 8)
+
+===========================================================================
+
+Begin optimization report for: Keyword_List::first(const Keyword_List *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Keyword_List::first(const Keyword_List *) const) ./keyword-list.icc(26,1)
+
+===========================================================================
+
+Begin optimization report for: Keyword_List::rest(Keyword_List *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Keyword_List::rest(Keyword_List *)) ./keyword-list.icc(33,1)
+
+===========================================================================
+
+Begin optimization report for: KeywordExt_List::KeywordExt_List(KeywordExt_List *, KeywordExt *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (KeywordExt_List::KeywordExt_List(KeywordExt_List *, KeywordExt *)) [5/12=41.7%] ./keyword-list.cc(39,1)
+  -> INLINE: (38,19) Keyword_List::Keyword_List(Keyword_List *const, Keyword *) (isz = 1) (sz = 8)
+    -> INLINE: (29,15) Keyword_List::Keyword_List(Keyword_List *, Keyword *) (isz = 1) (sz = 8)
+
+===========================================================================
+
+Begin optimization report for: KeywordExt_List::KeywordExt_List(KeywordExt_List *const, KeywordExt *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (KeywordExt_List::KeywordExt_List(KeywordExt_List *const, KeywordExt *)) [6/12=50.0%] ./keyword-list.cc(37,18)
+  -> INLINE: (37,18) KeywordExt_List::KeywordExt_List(KeywordExt_List *, KeywordExt *) (isz = 1) (sz = 8)
+    -> INLINE: (38,19) Keyword_List::Keyword_List(Keyword_List *const, Keyword *) (isz = 1) (sz = 8)
+      -> INLINE: (29,15) Keyword_List::Keyword_List(Keyword_List *, Keyword *) (isz = 1) (sz = 8)
+
+===========================================================================
+
+Begin optimization report for: copy_list(Keyword_List *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (copy_list(Keyword_List *)) [7/12=58.3%] ./keyword-list.cc(47,1)
+  -> EXTERN: (52,21) operator delete(void *, unsigned long)
+  -> EXTERN: (52,21) operator new(unsigned long)
+  -> INLINE (MANUAL): (52,56) Keyword_List::first(const Keyword_List *) const (isz = 0) (sz = 6)
+  -> INLINE: (52,56) Keyword_List::Keyword_List(Keyword_List *, Keyword *) (isz = 1) (sz = 8)
+  -> INLINE (MANUAL): (54,26) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE (MANUAL): (55,20) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+
+===========================================================================
+
+Begin optimization report for: copy_list(KeywordExt_List *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (copy_list(KeywordExt_List *)) [8/12=66.7%] ./keyword-list.cc(64,1)
+  -> INLINE: (65,42) copy_list(Keyword_List *) (isz = 44) (sz = 51)
+    -> EXTERN: (52,21) operator new(unsigned long)
+    -> EXTERN: (52,21) operator delete(void *, unsigned long)
+    -> INLINE: (52,56) Keyword_List::Keyword_List(Keyword_List *, Keyword *) (isz = 1) (sz = 8)
+    -> INLINE (MANUAL): (52,56) Keyword_List::first(const Keyword_List *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (54,26) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE (MANUAL): (55,20) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+
+===========================================================================
+
+Begin optimization report for: delete_list(Keyword_List *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (delete_list(Keyword_List *)) [9/12=75.0%] ./keyword-list.cc(71,1)
+  -> INLINE (MANUAL): (74,34) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> EXTERN: (75,7) operator delete(void *, unsigned long)
+
+===========================================================================
+
+Begin optimization report for: merge(Keyword_List *, Keyword_List *, Keyword_Comparison)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (merge(Keyword_List *, Keyword_List *, Keyword_Comparison)) ./keyword-list.cc(86,1)
+
+===========================================================================
+
+Begin optimization report for: mergesort_list(KeywordExt_List *, bool (*)(KeywordExt *, KeywordExt *))
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (mergesort_list(KeywordExt_List *, bool (*)(KeywordExt *, KeywordExt *))) [11/12=91.7%] ./keyword-list.cc(159,1)
+  -> INLINE: (162,8) mergesort_list(Keyword_List *, Keyword_Comparison) (isz = 105) (sz = 115)
+    -> INLINE (MANUAL): (125,29) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE (MANUAL): (132,39) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE (MANUAL): (134,24) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE (MANUAL): (137,24) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE (MANUAL): (138,28) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE (MANUAL): (146,42) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE (MANUAL): (147,15) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE: (150,14) merge(Keyword_List *, Keyword_List *, Keyword_Comparison) (isz = 40) (sz = 51)
+      -> INDIRECT-: (101,11)  less_52_V$12.0.10.46
+         [[ Callee not marked with inlining pragma  <1>]]
+      -> INLINE (MANUAL): (101,24) Keyword_List::first(const Keyword_List *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (101,40) Keyword_List::first(const Keyword_List *) const (isz = 0) (sz = 6)
+      -> INLINE (MANUAL): (104,29) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+      -> INLINE (MANUAL): (112,29) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> (150,21) mergesort_list(Keyword_List *, Keyword_Comparison) (isz = 105) (sz = 115)
+       [[ Callee not marked with inlining pragma  <1>]]
+    -> (151,21) mergesort_list(Keyword_List *, Keyword_Comparison) (isz = 105) (sz = 115)
+       [[ Callee not marked with inlining pragma  <1>]]
+
+===========================================================================
+
+Begin optimization report for: mergesort_list(Keyword_List *, Keyword_Comparison)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (mergesort_list(Keyword_List *, Keyword_Comparison)) [12/12=100.0%] ./keyword-list.cc(124,1)
+  -> INLINE (MANUAL): (125,29) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE (MANUAL): (132,39) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE (MANUAL): (134,24) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE (MANUAL): (137,24) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE (MANUAL): (138,28) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE (MANUAL): (146,42) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE (MANUAL): (147,15) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> INLINE: (150,14) merge(Keyword_List *, Keyword_List *, Keyword_Comparison) (isz = 40) (sz = 51)
+    -> INDIRECT-: (101,11)  less_52_V$12.0.10.35
+       [[ Callee not marked with inlining pragma  <1>]]
+    -> INLINE (MANUAL): (101,24) Keyword_List::first(const Keyword_List *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (101,40) Keyword_List::first(const Keyword_List *) const (isz = 0) (sz = 6)
+    -> INLINE (MANUAL): (104,29) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+    -> INLINE (MANUAL): (112,29) Keyword_List::rest(Keyword_List *) (isz = 1) (sz = 7)
+  -> (150,21) mergesort_list(Keyword_List *, Keyword_Comparison) (isz = 105) (sz = 115)
+     [[ Callee not marked with inlining pragma  <1>]]
+  -> (151,21) mergesort_list(Keyword_List *, Keyword_Comparison) (isz = 105) (sz = 115)
+     [[ Callee not marked with inlining pragma  <1>]]
+
+===========================================================================
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING FOOTNOTES:
+
+<1> The compiler's heuristics indicate that the function is not profitable to 
+    inline.  Override this decision by adding "inline 
+    __attribute__((always_inline))" to the declaration of the called function, 
+    or add "#pragma forceinline" before the call site.
+

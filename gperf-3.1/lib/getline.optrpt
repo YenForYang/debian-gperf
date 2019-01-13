@@ -1,0 +1,87 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -diag-disable=10013,10385,10237,10346 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=99999 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -c -o getline.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 99999 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: memcpy(void *, const void *, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (memcpy(void *, const void *, size_t))/usr/include/x86_64-linux-gnu/bits/string_fortified.h(33,1)
+
+===========================================================================
+
+Begin optimization report for: getstr(char **, size_t *, FILE *, char, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (getstr(char **, size_t *, FILE *, char, size_t)) ./getline.cc(40,1)
+
+===========================================================================
+
+Begin optimization report for: get_line(char **, size_t *, FILE *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (get_line(char **, size_t *, FILE *)) [3/4=75.0%] ./getline.cc(109,1)
+  -> INLINE: (110,10) getstr(char **, size_t *, FILE *, char, size_t) (isz = 156) (sz = 173)
+    -> EXTERN: (50,28) operator new[](unsigned long)
+    -> EXTERN: (50,28) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (58,24) getc(FILE *)
+    -> EXTERN: (64,7) __assert_fail(const char *, const char *, unsigned int, const char *)
+    -> EXTERN: (73,38) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (73,38) operator new[](unsigned long)
+    -> INLINE (MANUAL): (76,15) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+    -> EXTERN: (77,15) operator delete[](void *, unsigned long)
+    -> EXTERN: (81,11) __assert_fail(const char *, const char *, unsigned int, const char *)
+    -> EXTERN: (84,23) ferror(FILE *)
+
+===========================================================================
+
+Begin optimization report for: get_delim(char **, size_t *, int, FILE *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (get_delim(char **, size_t *, int, FILE *)) [4/4=100.0%] ./getline.cc(115,1)
+  -> INLINE: (116,10) getstr(char **, size_t *, FILE *, char, size_t) (isz = 156) (sz = 173)
+    -> EXTERN: (50,28) operator new[](unsigned long)
+    -> EXTERN: (50,28) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (58,24) getc(FILE *)
+    -> EXTERN: (64,7) __assert_fail(const char *, const char *, unsigned int, const char *)
+    -> EXTERN: (73,38) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (73,38) operator new[](unsigned long)
+    -> INLINE (MANUAL): (76,15) memcpy(void *, const void *, size_t) (isz = 7) (sz = 18)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+    -> EXTERN: (77,15) operator delete[](void *, unsigned long)
+    -> EXTERN: (81,11) __assert_fail(const char *, const char *, unsigned int, const char *)
+    -> EXTERN: (84,23) ferror(FILE *)
+
+===========================================================================

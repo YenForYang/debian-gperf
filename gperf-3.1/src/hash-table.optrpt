@@ -1,0 +1,134 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -I./../lib -diag-disable=10013,10385,10237,10346 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=99999 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -c -o hash-table.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 99999 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: Hash_Table::Hash_Table(Hash_Table *, unsigned int, bool)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Hash_Table::Hash_Table(Hash_Table *, unsigned int, bool)) [1/9=11.1%] ./hash-table.cc(44,1)
+  -> EXTERN: (79,28) operator new[](unsigned long)
+  -> EXTERN: (79,28) __cxa_throw_bad_array_new_length()
+  -> INLINE (MANUAL): (80,3) memset(void *, int, size_t) (isz = 7) (sz = 18)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(71,10) __builtin___memset_chk(void *, int, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(71,55) __builtin_object_size(const void *, int)
+
+===========================================================================
+
+Begin optimization report for: Hash_Table::Hash_Table(Hash_Table *const, unsigned int, bool)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Hash_Table::Hash_Table(Hash_Table *const, unsigned int, bool)) [2/9=22.2%] ./hash-table.cc(41,13)
+  -> INLINE: (41,13) Hash_Table::Hash_Table(Hash_Table *, unsigned int, bool) (isz = 61) (sz = 70)
+    -> EXTERN: (79,28) __cxa_throw_bad_array_new_length()
+    -> EXTERN: (79,28) operator new[](unsigned long)
+    -> INLINE (MANUAL): (80,3) memset(void *, int, size_t) (isz = 7) (sz = 18)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(71,10) __builtin___memset_chk(void *, int, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(71,55) __builtin_object_size(const void *, int)
+
+===========================================================================
+
+Begin optimization report for: Hash_Table::~Hash_Table(Hash_Table *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Hash_Table::~Hash_Table(Hash_Table *)) [3/9=33.3%] ./hash-table.cc(85,1)
+  -> EXTERN: (86,3) operator delete[](void *, unsigned long)
+
+===========================================================================
+
+Begin optimization report for: Hash_Table::~Hash_Table(Hash_Table *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Hash_Table::~Hash_Table(Hash_Table *const)) [4/9=44.4%] ./hash-table.cc(84,13)
+  -> INLINE: (84,13) Hash_Table::~Hash_Table(Hash_Table *) (isz = 6) (sz = 11)
+    -> EXTERN: (86,3) operator delete[](void *, unsigned long)
+
+===========================================================================
+
+Begin optimization report for: Hash_Table::insert(Hash_Table *, KeywordExt *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Hash_Table::insert(Hash_Table *, KeywordExt *)) [5/9=55.6%] ./hash-table.cc(141,1)
+  -> EXTERN: (143,5) hashpjw(const unsigned char *, unsigned int)
+  -> INLINE (MANUAL): (156,11) Hash_Table::equal(const Hash_Table *, KeywordExt *, KeywordExt *) const (isz = 27) (sz = 38)
+    -> EXTERN: (130,13) memcmp(const void *, const void *, size_t)
+
+===========================================================================
+
+Begin optimization report for: Hash_Table::equal(const Hash_Table *, KeywordExt *, KeywordExt *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Hash_Table::equal(const Hash_Table *, KeywordExt *, KeywordExt *) const) ./hash-table.cc(128,1)
+
+===========================================================================
+
+Begin optimization report for: fprintf(FILE *, const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fprintf(FILE *, const char *, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(99,1)
+
+===========================================================================
+
+Begin optimization report for: memset(void *, int, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (memset(void *, int, size_t))/usr/include/x86_64-linux-gnu/bits/string_fortified.h(60,1)
+
+===========================================================================
+
+Begin optimization report for: Hash_Table::dump(const Hash_Table *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Hash_Table::dump(const Hash_Table *) const) [9/9=100.0%] ./hash-table.cc(92,1)
+  -> INLINE: (103,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (113,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (115,11) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (117,11) putc(int, FILE *)
+  -> INLINE: (118,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE: (122,3) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+
+===========================================================================

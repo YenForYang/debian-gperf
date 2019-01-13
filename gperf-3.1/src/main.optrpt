@@ -1,0 +1,201 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -I./../lib -diag-disable=10013,10385,10237,10346 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=99999 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -D_FORTIFY_SOURCE=2 -c -o main.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 99999 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main(int, char **)) [1/13=7.7%] ./main.cc(50,1)
+  -> EXTERN: (54,10) Options::parse_options(Options *, int, char **)
+  -> INLINE (MANUAL): (57,14) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (58,10) freopen(const char *, const char *, FILE *)
+  -> INLINE (MANUAL): (58,26) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (60,9) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (61,25) Options::get_input_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (62,9) exit(int)
+  -> (67,24) KeywordExt_Factory::~KeywordExt_Factory(KeywordExt_Factory *) (isz = 5) (sz = 10)
+     [[ Callee not marked with inlining pragma  <1>]]
+  -> INLINE (MANUAL): (67,24) KeywordExt_Factory::KeywordExt_Factory(KeywordExt_Factory *) (isz = 5) (sz = 10)
+    -> EXTERN: (34,7) Keyword_Factory::Keyword_Factory(Keyword_Factory *const)
+  -> EXTERN: (68,29) Input::~Input(Input *)
+  -> EXTERN: (68,29) Input::Input(Input *, FILE *, Keyword_Factory *)
+  -> EXTERN: (69,14) Input::read_input(Input *)
+  -> EXTERN: (76,24) Search::~Search(Search *)
+  -> EXTERN: (76,24) Search::Search(Search *, KeywordExt_List *)
+  -> EXTERN: (77,16) Search::optimize(Search *)
+  -> INLINE (MANUAL): (81,18) Options::get_output_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (82,13) strcmp(const char *, const char *)
+  -> INLINE (MANUAL): (82,28) Options::get_output_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (83,16) freopen(const char *, const char *, FILE *)
+  -> INLINE (MANUAL): (83,32) Options::get_output_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> INLINE: (85,15) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> INLINE (MANUAL): (86,31) Options::get_output_file_name(const Options *) const (isz = 0) (sz = 6)
+  -> EXTERN: (87,15) exit(int)
+  -> EXTERN: (112,27) Output::Output(Output *, KeywordExt_List *, const char *, unsigned int, const char *, const char *, const char *, const char *, unsigned int, const char *, const char *, unsigned int, bool, int, int, int, bool, const Positions &, const unsigned int *, int, unsigned int, const int *)
+  -> EXTERN: (113,19) Output::output(Output *)
+  -> EXTERN: (117,13) fflush(FILE *)
+  -> EXTERN: (117,32) ferror(FILE *)
+  -> INLINE: (119,13) fprintf(FILE *, const char *, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *, int, const char *, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack()
+  -> EXTERN: (126,5) Search::~Search(Search *)
+  -> INLINE (MANUAL): (130,55) KeywordExt_List::rest(KeywordExt_List *) (isz = 1) (sz = 7)
+  -> INLINE (MANUAL): (132,36) KeywordExt_List::first(const KeywordExt_List *) const (isz = 0) (sz = 6)
+  -> EXTERN: (136,13) operator delete[](void *, unsigned long)
+  -> EXTERN: (138,15) operator delete[](void *, unsigned long)
+  -> EXTERN: (141,15) operator delete[](void *, unsigned long)
+  -> EXTERN: (142,13) operator delete(void *, unsigned long)
+  -> EXTERN: (147,5) delete_list(Keyword_List *)
+  -> INLINE (MANUAL): (150,3) KeywordExt_Factory::~KeywordExt_Factory(KeywordExt_Factory *) (isz = 5) (sz = 10)
+    -> EXTERN: (34,7) Keyword_Factory::~Keyword_Factory(Keyword_Factory *const)
+    -> EXTERN: (34,7) __cxa_call_unexpected
+  -> EXTERN: (150,3) Input::~Input(Input *)
+
+===========================================================================
+
+Begin optimization report for: KeywordExt_Factory::~KeywordExt_Factory(KeywordExt_Factory *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (KeywordExt_Factory::~KeywordExt_Factory(KeywordExt_Factory *)) [2/13=15.4%] ./main.cc(34,7)
+  -> EXTERN: (34,7) __cxa_call_unexpected
+  -> EXTERN: (34,7) Keyword_Factory::~Keyword_Factory(Keyword_Factory *const)
+
+===========================================================================
+
+Begin optimization report for: KeywordExt_Factory::~KeywordExt_Factory(KeywordExt_Factory *const)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (KeywordExt_Factory::~KeywordExt_Factory(KeywordExt_Factory *const)) [3/13=23.1%] ./main.cc(34,7)
+  -> EXTERN: (34,7) operator delete(void *, unsigned long)
+  -> INLINE (MANUAL): (34,7) KeywordExt_Factory::~KeywordExt_Factory(KeywordExt_Factory *) (isz = 5) (sz = 10)
+    -> EXTERN: (34,7) Keyword_Factory::~Keyword_Factory(Keyword_Factory *const)
+    -> EXTERN: (34,7) __cxa_call_unexpected
+
+===========================================================================
+
+Begin optimization report for: KeywordExt_Factory::create_keyword(KeywordExt_Factory *, const char *, int, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (KeywordExt_Factory::create_keyword(KeywordExt_Factory *, const char *, int, const char *)) [4/13=30.8%] ./main.cc(42,1)
+  -> EXTERN: (43,3) operator new(unsigned long)
+  -> INLINE (MANUAL): (43,53) KeywordExt::KeywordExt(KeywordExt *, const char *, int, const char *) (isz = 4) (sz = 15)
+    -> INLINE (MANUAL): ./keyword.icc:(37,41) Keyword::Keyword(Keyword *const, const char *, int, const char *) (isz = 2) (sz = 13)
+      -> INLINE (MANUAL): (26,10) Keyword::Keyword(Keyword *, const char *, int, const char *) (isz = 2) (sz = 12)
+
+===========================================================================
+
+Begin optimization report for: Options::get_input_file_name(const Options *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::get_input_file_name(const Options *) const) ./options.icc(41,1)
+
+===========================================================================
+
+Begin optimization report for: Options::get_output_file_name(const Options *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Options::get_output_file_name(const Options *) const) ./options.icc(48,1)
+
+===========================================================================
+
+Begin optimization report for: Keyword::Keyword(Keyword *, const char *, int, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Keyword::Keyword(Keyword *, const char *, int, const char *)) ./keyword.icc(28,1)
+
+===========================================================================
+
+Begin optimization report for: Keyword::Keyword(Keyword *const, const char *, int, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Keyword::Keyword(Keyword *const, const char *, int, const char *)) ./keyword.icc(26,10)
+
+===========================================================================
+
+Begin optimization report for: KeywordExt::KeywordExt(KeywordExt *, const char *, int, const char *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (KeywordExt::KeywordExt(KeywordExt *, const char *, int, const char *)) ./keyword.icc(39,1)
+
+===========================================================================
+
+Begin optimization report for: KeywordExt_List::first(const KeywordExt_List *) const
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (KeywordExt_List::first(const KeywordExt_List *) const) ./keyword-list.icc(42,1)
+
+===========================================================================
+
+Begin optimization report for: KeywordExt_List::rest(KeywordExt_List *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (KeywordExt_List::rest(KeywordExt_List *)) ./keyword-list.icc(49,1)
+
+===========================================================================
+
+Begin optimization report for: KeywordExt_Factory::KeywordExt_Factory(KeywordExt_Factory *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (KeywordExt_Factory::KeywordExt_Factory(KeywordExt_Factory *)) ./main.cc(34,7)
+
+===========================================================================
+
+Begin optimization report for: fprintf(FILE *, const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fprintf(FILE *, const char *, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(99,1)
+
+===========================================================================
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING FOOTNOTES:
+
+<1> The compiler's heuristics indicate that the function is not profitable to 
+    inline.  Override this decision by adding "inline 
+    __attribute__((always_inline))" to the declaration of the called function, 
+    or add "#pragma forceinline" before the call site.
+
